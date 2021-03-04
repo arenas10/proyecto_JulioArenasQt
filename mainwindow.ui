@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>726</width>
+    <height>374</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QGroupBox" name="groupBoxcaracteristicas">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>10</y>
+      <width>251</width>
+      <height>251</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>     Caracteristicas de la Fruta</string>
+    </property>
+    <widget class="QWidget" name="gridLayoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>20</y>
+       <width>238</width>
+       <height>231</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="fruta"/>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>Estado de maduracion</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Nombre de la Fruta</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QRadioButton" name="radioButton_2">
+          <property name="text">
+           <string>Madura</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="radioButton_3">
+          <property name="text">
+           <string>Pinton</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="radioButton">
+          <property name="text">
+           <string>Verde</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupBoxcontrol">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>10</y>
+      <width>231</width>
+      <height>291</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>   Control del Sistema Deshidratacion</string>
+    </property>
+    <widget class="QWidget" name="gridLayoutWidget_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>221</width>
+       <height>241</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="0" column="2">
+       <widget class="QSlider" name="velocidad">
+        <property name="mouseTracking">
+         <bool>true</bool>
+        </property>
+        <property name="tabletTracking">
+         <bool>true</bool>
+        </property>
+        <property name="maximum">
+         <number>80</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="tickPosition">
+         <enum>QSlider::TicksBelow</enum>
+        </property>
+        <property name="tickInterval">
+         <number>10</number>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_6">
+        <property name="text">
+         <string>Resistencia(T*)</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_5">
+        <property name="text">
+         <string>Motor (rpm)</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QSpinBox" name="resistencia">
+        <property name="maximum">
+         <number>40</number>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_7">
+        <property name="text">
+         <string>Barras (voltaje)</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2">
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QRadioButton" name="seis">
+          <property name="text">
+           <string>6V</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="ocho">
+          <property name="text">
+           <string>8V</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="die">
+          <property name="text">
+           <string>10V</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>Grados Brix </string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="2">
+       <widget class="QSpinBox" name="brix"/>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupBox">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>20</y>
+      <width>201</width>
+      <height>131</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>     Temperatura °C </string>
+    </property>
+    <widget class="QWidget" name="gridLayoutWidget_3">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>50</y>
+       <width>160</width>
+       <height>80</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_3">
+      <item row="0" column="0">
+       <widget class="QLCDNumber" name="temperatura"/>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>190</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Cerrar</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="iniciar">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>280</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Conectar</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_3">
+    <property name="geometry">
+     <rect>
+      <x>600</x>
+      <y>160</y>
+      <width>111</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Iniciar</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBox">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>280</y>
+      <width>86</width>
+      <height>25</height>
+     </rect>
+    </property>
+   </widget>
+   <zorder>iniciar</zorder>
+   <zorder>groupBoxcaracteristicas</zorder>
+   <zorder>groupBoxcontrol</zorder>
+   <zorder>groupBox</zorder>
+   <zorder>pushButton</zorder>
+   <zorder>pushButton_3</zorder>
+   <zorder>comboBox</zorder>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>726</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>
