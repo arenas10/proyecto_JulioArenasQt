@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>726</width>
-    <height>374</height>
+    <width>838</width>
+    <height>470</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,10 +17,10 @@
    <widget class="QGroupBox" name="groupBoxcaracteristicas">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>10</x>
       <y>10</y>
-      <width>251</width>
-      <height>251</height>
+      <width>291</width>
+      <height>261</height>
      </rect>
     </property>
     <property name="title">
@@ -29,15 +29,25 @@
     <widget class="QWidget" name="gridLayoutWidget">
      <property name="geometry">
       <rect>
-       <x>0</x>
-       <y>20</y>
-       <width>238</width>
+       <x>10</x>
+       <y>30</y>
+       <width>281</width>
        <height>231</height>
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout">
       <item row="0" column="1">
        <widget class="QLineEdit" name="fruta"/>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>Nombre archivo</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="filename"/>
       </item>
       <item row="1" column="0">
        <widget class="QLabel" name="label_2">
@@ -56,21 +66,21 @@
       <item row="1" column="1">
        <layout class="QVBoxLayout" name="verticalLayout">
         <item>
-         <widget class="QRadioButton" name="radioButton_2">
+         <widget class="QRadioButton" name="frutaMadura">
           <property name="text">
            <string>Madura</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QRadioButton" name="radioButton_3">
+         <widget class="QRadioButton" name="frutaPinton">
           <property name="text">
            <string>Pinton</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QRadioButton" name="radioButton">
+         <widget class="QRadioButton" name="frutaVerde">
           <property name="text">
            <string>Verde</string>
           </property>
@@ -78,57 +88,59 @@
         </item>
        </layout>
       </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_8">
+        <property name="text">
+         <string>Ruta de archivo</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="route"/>
+      </item>
      </layout>
     </widget>
    </widget>
    <widget class="QGroupBox" name="groupBoxcontrol">
     <property name="geometry">
      <rect>
-      <x>280</x>
+      <x>310</x>
       <y>10</y>
-      <width>231</width>
-      <height>291</height>
+      <width>261</width>
+      <height>301</height>
      </rect>
     </property>
     <property name="title">
-     <string>   Control del Sistema Deshidratacion</string>
+     <string>   Control del Sistema Deshidratación</string>
     </property>
     <widget class="QWidget" name="gridLayoutWidget_2">
      <property name="geometry">
       <rect>
        <x>10</x>
        <y>20</y>
-       <width>221</width>
-       <height>241</height>
+       <width>225</width>
+       <height>242</height>
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
-      <item row="0" column="2">
-       <widget class="QSlider" name="velocidad">
-        <property name="mouseTracking">
-         <bool>true</bool>
-        </property>
-        <property name="tabletTracking">
-         <bool>true</bool>
-        </property>
-        <property name="maximum">
-         <number>80</number>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="tickPosition">
-         <enum>QSlider::TicksBelow</enum>
-        </property>
-        <property name="tickInterval">
-         <number>10</number>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_6">
+        <property name="text">
+         <string>Temperatura horno(º C)</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="label_6">
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_7">
         <property name="text">
-         <string>Resistencia(T*)</string>
+         <string>Barras (voltaje)</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QSpinBox" name="resistencia">
+        <property name="maximum">
+         <number>40</number>
         </property>
        </widget>
       </item>
@@ -139,21 +151,25 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="2">
-       <widget class="QSpinBox" name="resistencia">
-        <property name="maximum">
-         <number>40</number>
-        </property>
-       </widget>
+      <item row="0" column="1">
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
+         <widget class="QPushButton" name="botonON">
+          <property name="text">
+           <string>ON</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="botonOFF">
+          <property name="text">
+           <string>OFF</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="label_7">
-        <property name="text">
-         <string>Barras (voltaje)</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="2">
+      <item row="3" column="1">
        <layout class="QVBoxLayout" name="verticalLayout_2">
         <item>
          <widget class="QRadioButton" name="seis">
@@ -176,113 +192,143 @@
           </property>
          </widget>
         </item>
+        <item>
+         <widget class="QRadioButton" name="cero">
+          <property name="text">
+           <string>0V</string>
+          </property>
+         </widget>
+        </item>
        </layout>
       </item>
-      <item row="3" column="0">
+      <item row="4" column="0">
        <widget class="QLabel" name="label_3">
         <property name="text">
          <string>Grados Brix </string>
         </property>
        </widget>
       </item>
-      <item row="3" column="2">
+      <item row="4" column="1">
        <widget class="QSpinBox" name="brix"/>
       </item>
      </layout>
+    </widget>
+    <widget class="QPushButton" name="pushButton_3">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>270</y>
+       <width>218</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Iniciar transmisión</string>
+     </property>
     </widget>
    </widget>
    <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
      <rect>
-      <x>520</x>
-      <y>20</y>
-      <width>201</width>
-      <height>131</height>
+      <x>580</x>
+      <y>10</y>
+      <width>251</width>
+      <height>281</height>
      </rect>
     </property>
     <property name="title">
-     <string>     Temperatura °C </string>
+     <string>Información</string>
     </property>
     <widget class="QWidget" name="gridLayoutWidget_3">
      <property name="geometry">
       <rect>
        <x>20</x>
        <y>50</y>
-       <width>160</width>
-       <height>80</height>
+       <width>220</width>
+       <height>216</height>
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout_3">
+      <item row="3" column="0">
+       <widget class="QLCDNumber" name="tiempominutos">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="digitCount">
+         <number>3</number>
+        </property>
+       </widget>
+      </item>
       <item row="0" column="0">
-       <widget class="QLCDNumber" name="temperatura"/>
+       <widget class="QLabel" name="label_10">
+        <property name="text">
+         <string>Temperatura °C </string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLCDNumber" name="temperatura">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="digitCount">
+         <number>3</number>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_9">
+        <property name="text">
+         <string>Tiempo transcurrido en minutos</string>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QWidget" name="horizontalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>630</x>
-      <y>190</y>
-      <width>75</width>
-      <height>23</height>
+      <x>490</x>
+      <y>310</y>
+      <width>316</width>
+      <height>80</height>
      </rect>
     </property>
-    <property name="text">
-     <string>Cerrar</string>
-    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QComboBox" name="comboBox"/>
+     </item>
+     <item>
+      <widget class="QPushButton" name="iniciar">
+       <property name="text">
+        <string>Conectar</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton">
+       <property name="text">
+        <string>Cerrar</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
-   <widget class="QPushButton" name="iniciar">
-    <property name="geometry">
-     <rect>
-      <x>100</x>
-      <y>280</y>
-      <width>75</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Conectar</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_3">
-    <property name="geometry">
-     <rect>
-      <x>600</x>
-      <y>160</y>
-      <width>111</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Iniciar</string>
-    </property>
-   </widget>
-   <widget class="QComboBox" name="comboBox">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>280</y>
-      <width>86</width>
-      <height>25</height>
-     </rect>
-    </property>
-   </widget>
-   <zorder>iniciar</zorder>
-   <zorder>groupBoxcaracteristicas</zorder>
-   <zorder>groupBoxcontrol</zorder>
-   <zorder>groupBox</zorder>
-   <zorder>pushButton</zorder>
-   <zorder>pushButton_3</zorder>
-   <zorder>comboBox</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>726</width>
-     <height>22</height>
+     <width>838</width>
+     <height>21</height>
     </rect>
    </property>
   </widget>

@@ -10,12 +10,18 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+    tiempotimer=10000;//10 segundos
     ui->setupUi(this);
     arduinoc();
     ui->groupBoxcaracteristicas->setEnabled(false);
     ui->groupBoxcontrol->setEnabled(false);
+    ui->groupBox->setEnabled(false);
+    ui->pushButton->setStyleSheet("QPushButton{font-size: 18px;font-family: Arial;color: rgb(0, 0, 0);background-color: rgb(204,0,0);}");
+    ui->temperatura->setStyleSheet("QLCDNumber{color: rgb(254, 0, 0);}");
     connect(this,SIGNAL(detector(int)),this,SLOT(iniciar()));
     connect(arduino,&QSerialPort::readyRead, this, &MainWindow::readyToReadData);
+    connect(&timer, SIGNAL(timeout()), this, SLOT(updateTime()));
+
 
 }
 
@@ -41,9 +47,12 @@ void MainWindow::on_iniciar_clicked()
         arduino->setFlowControl(QSerialPort::NoFlowControl);
         qDebug() << "Conectado al puerto "<<arduino_port_name<< "Con 9600 baudios, 8 bits, sin paridad";
          ui->groupBoxcaracteristicas->setEnabled(true);
+         ui->groupBox->setEnabled(true);
+         ui->groupBoxcontrol->setEnabled(true);
     }else{
         // give error message if not available
-        QMessageBox::warning(this, "Error de puerto", "No se encentra puerto COM o tty disponible");
+        QMessageBox::warning(this, "Error de puerto", "No se encuentra puerto COM o tty disponible\nRevisa conexiones y pulsa OK");
+        arduinoc();
     }
 
 
@@ -53,7 +62,7 @@ void MainWindow::iniciar()
 {
 
     //variable del motor
-       i = ui->velocidad->value();
+
        //qDebug()<<i;
 
      if(i<10){
@@ -66,6 +75,7 @@ void MainWindow::iniciar()
      }
 
      //variable de la resistencia
+
      j=ui->resistencia->value();
      //qDebug()<<j;
 
@@ -91,6 +101,9 @@ void MainWindow::iniciar()
     if(ui->die->isChecked()){
         x="10";
     }
+    if(ui->cero->isChecked()){
+        x="00";
+    }
     //qDebug()<<x;
 
     //variable de grados brix
@@ -104,16 +117,15 @@ void MainWindow::iniciar()
    else {
        b=QString::number(j);
    }
-
-
-    if(arduino->isWritable()){
-        arduino->write(vel.toUtf8()+Res.toUtf8()+x.toUtf8()+b.toUtf8());
-        qDebug()<<QString(vel.toUtf8()+Res.toUtf8()+x.toUtf8()+b.toUtf8());
+    if(escriturahabilitada){
+        if(arduino->isWritable()){
+            arduino->write(vel.toUtf8()+Res.toUtf8()+x.toUtf8()+b.toUtf8());
+            qDebug()<<QString(vel.toUtf8()+Res.toUtf8()+x.toUtf8()+b.toUtf8());
+        }
+        else{
+            qDebug() << "Couldn't write to serial!";
+        }
     }
-    else{
-        qDebug() << "Couldn't write to serial!";
-    }
-
 }
 
 void MainWindow::arduinoc()
@@ -152,11 +164,11 @@ void MainWindow::on_ocho_clicked()
 {
     emit detector(1);
 }
-
+/*
 void MainWindow::on_velocidad_valueChanged(int value)
 {
     emit detector(value);   //(2)
-}
+}*/
 
 void MainWindow::on_seis_clicked()
 {
@@ -168,16 +180,52 @@ void MainWindow::on_die_clicked()
     emit detector(4);
 }
 
+//https://hetpro-store.com/TUTORIALES/qfile-para-crear-archivos-en-qt-creator/
 void MainWindow::on_pushButton_3_clicked()
+
 {
-    if(ui->groupBoxcaracteristicas->isEnabled()){
-    ui->pushButton_3->setText("Parar");
+    if(ui->groupBoxcaracteristicas->isEnabled()){//al cliquear en iniciar
+    ui->pushButton_3->setText("Finalizar");
     ui->groupBoxcontrol->setEnabled(true);
+    escriturahabilitada=1;
+    iniciar();
+    tiempoTranscurrido.setHMS(0,0,0,0);
+    tiempoS=0;
+    ui->tiempominutos->display(0);
+    timer.start(tiempotimer);
+    myFile.setFileName(ui->route->text()+ui->filename->text()+".csv");
+    if(myFile.open(QIODevice::WriteOnly | QIODevice::Text))
+        qDebug("Abre correctamente");
+    outstream.setDevice(&myFile);
+    outstream <<ui->fruta->text()<<endl;
+    if(ui->frutaMadura->isChecked())
+        outstream << "Madura"<<endl;
+    else if (ui->frutaPinton->isChecked()) {
+        outstream << "Pinton"<<endl;
+    }
+    else if (ui->frutaVerde->isChecked()) {
+        outstream << "Verde"<<endl;
     }
 
-    else{
-        ui->pushButton_3->setText("Iniciar");
-        ui->groupBoxcontrol->setEnabled(false);
+    QString FORMAT = "d/MM/yyyy hh:mm:ss";
+    outstream<<QDateTime::currentDateTime().toString(FORMAT)<<endl;
+    qDebug()<<QDateTime::currentDateTime().toString(FORMAT);
+    outstream<<"Tiempo (s),Motor,Resistencia,Barras (V),GradosBrix,Temperatura(C)"<<endl;
+    }
+
+    else{ //al cliquear en parar
+        ui->pushButton_3->setText("Iniciar transmisión");
+        ui->resistencia->setValue(0);
+        ui->brix->setValue(0);
+        i=11;
+        ui->cero->setChecked(true);
+        ui->botonON->setEnabled(true);
+        ui->botonOFF->setEnabled(true);
+        iniciar();
+        escriturahabilitada=0;
+        timer.stop();
+        ui->tiempominutos->display(0);
+        myFile.close();
     }
 
     ui->groupBoxcaracteristicas->setEnabled(!(ui->groupBoxcaracteristicas->isEnabled()));
@@ -195,4 +243,66 @@ void MainWindow::readyToReadData(){
 void MainWindow::on_brix_valueChanged(int arg1)
 {
     emit detector(arg1*300);
+}
+
+void MainWindow::on_botonON_clicked()
+{
+    i=99;
+    ui->botonON->setEnabled(false);
+    ui->botonOFF->setEnabled(true);
+    iniciar();
+}
+
+void MainWindow::on_botonOFF_clicked()
+{
+    i=11;
+    ui->botonOFF->setEnabled(false);
+    ui->botonON->setEnabled(true);
+    iniciar();
+}
+
+void MainWindow::on_cero_clicked()
+{
+    emit detector(8);
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    close();
+}
+void MainWindow::updateTime(){
+    if(escriturahabilitada){
+        tiempoTranscurrido=tiempoTranscurrido.addMSecs(tiempotimer);
+        tiempoS=tiempoS+(tiempotimer/1000);
+        outstream<<QString::number(tiempoS)<<',';
+        if(i==99)
+            outstream<<"1,";//escribir motor
+        else {
+            outstream<<"0,";
+        }
+
+        outstream<<ui->resistencia->text()<<',';//escribir resistencia
+
+        if(ui->cero->isChecked())//escribir Barras
+            outstream<<"0,";
+        else if (ui->seis->isChecked()) {
+            outstream<<"6,";
+        }
+        else if (ui->ocho->isChecked()) {
+            outstream<<"8,";
+        }
+        else if (ui->die->isChecked()) {
+            outstream<<"10,";
+        }
+        outstream<<QString::number(ui->brix->value())<<','<<QString::number(ui->temperatura->value())<<endl;
+
+    }
+    else {    tiempoTranscurrido.setHMS(0,0,0,0);
+        tiempoS=0;
+    }
+    qDebug("tiempoTranscurrido %d segundos",tiempoTranscurrido.second());
+    qDebug("tiempoTranscurrido %d min",tiempoTranscurrido.minute());
+    ui->tiempominutos->display(int(tiempoTranscurrido.minute()));
+
+
 }
