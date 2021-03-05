@@ -20,7 +20,7 @@
       <x>10</x>
       <y>10</y>
       <width>291</width>
-      <height>261</height>
+      <height>411</height>
      </rect>
     </property>
     <property name="title">
@@ -30,45 +30,18 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>30</y>
+       <y>20</y>
        <width>281</width>
-       <height>231</height>
+       <height>281</height>
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout">
-      <item row="0" column="1">
-       <widget class="QLineEdit" name="fruta"/>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="label_4">
-        <property name="text">
-         <string>Nombre archivo</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="QLineEdit" name="filename"/>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="label_2">
-        <property name="text">
-         <string>Estado de maduracion</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0">
-       <widget class="QLabel" name="label">
-        <property name="text">
-         <string>Nombre de la Fruta</string>
-        </property>
-       </widget>
-      </item>
       <item row="1" column="1">
        <layout class="QVBoxLayout" name="verticalLayout">
         <item>
          <widget class="QRadioButton" name="frutaMadura">
           <property name="text">
-           <string>Madura</string>
+           <string>&amp;Madura</string>
           </property>
          </widget>
         </item>
@@ -82,21 +55,51 @@
         <item>
          <widget class="QRadioButton" name="frutaVerde">
           <property name="text">
-           <string>Verde</string>
+           <string>&amp;Verde</string>
           </property>
          </widget>
         </item>
        </layout>
       </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="label_8">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label">
         <property name="text">
-         <string>Ruta de archivo</string>
+         <string>Nombre de la Fruta</string>
         </property>
        </widget>
       </item>
-      <item row="3" column="1">
-       <widget class="QLineEdit" name="route"/>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="fruta"/>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>Estado de maduracion</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="verticalLayoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>300</y>
+       <width>160</width>
+       <height>80</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_4">
+      <item>
+       <widget class="QPushButton" name="pushButton_2">
+        <property name="text">
+         <string>Generar archivo</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>calc.ico</normaloff>calc.ico</iconset>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
@@ -107,7 +110,7 @@
       <x>310</x>
       <y>10</y>
       <width>261</width>
-      <height>301</height>
+      <height>321</height>
      </rect>
     </property>
     <property name="title">
@@ -118,8 +121,8 @@
       <rect>
        <x>10</x>
        <y>20</y>
-       <width>225</width>
-       <height>242</height>
+       <width>238</width>
+       <height>268</height>
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
@@ -174,28 +177,28 @@
         <item>
          <widget class="QRadioButton" name="seis">
           <property name="text">
-           <string>6V</string>
+           <string>&amp;6V</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QRadioButton" name="ocho">
           <property name="text">
-           <string>8V</string>
+           <string>&amp;8V</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QRadioButton" name="die">
           <property name="text">
-           <string>10V</string>
+           <string>&amp;10V</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QRadioButton" name="cero">
           <property name="text">
-           <string>0V</string>
+           <string>&amp;0V</string>
           </property>
          </widget>
         </item>
@@ -217,13 +220,17 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>270</y>
+       <y>290</y>
        <width>218</width>
        <height>25</height>
       </rect>
      </property>
      <property name="text">
       <string>Iniciar transmisión</string>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>power.ico</normaloff>power.ico</iconset>
      </property>
     </widget>
    </widget>
@@ -295,8 +302,8 @@
    <widget class="QWidget" name="horizontalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>490</x>
-      <y>310</y>
+      <x>300</x>
+      <y>360</y>
       <width>316</width>
       <height>80</height>
      </rect>
@@ -328,7 +335,7 @@
      <x>0</x>
      <y>0</y>
      <width>838</width>
-     <height>21</height>
+     <height>30</height>
     </rect>
    </property>
   </widget>

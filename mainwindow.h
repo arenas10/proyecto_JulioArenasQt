@@ -47,6 +47,8 @@ private slots:
 
        void on_pushButton_clicked();
 
+       void on_pushButton_2_clicked();
+
 signals:
        void detector(int x);
 
@@ -68,6 +70,7 @@ private:
     QTimer timer;
     QTextStream outstream;
     QFile myFile;
+    QString nombreArchivo;
 };
 
 #endif // MAINWINDOW_H

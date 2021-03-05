@@ -5,6 +5,8 @@
 #include <iostream>
 #include <QSerialPort>
 #include <QSerialPortInfo>
+#include <QFileDialog>
+#include <QTextStream>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -49,6 +51,7 @@ void MainWindow::on_iniciar_clicked()
          ui->groupBoxcaracteristicas->setEnabled(true);
          ui->groupBox->setEnabled(true);
          ui->groupBoxcontrol->setEnabled(true);
+         ui->pushButton_3->setEnabled(false);
     }else{
         // give error message if not available
         QMessageBox::warning(this, "Error de puerto", "No se encuentra puerto COM o tty disponible\nRevisa conexiones y pulsa OK");
@@ -193,7 +196,7 @@ void MainWindow::on_pushButton_3_clicked()
     tiempoS=0;
     ui->tiempominutos->display(0);
     timer.start(tiempotimer);
-    myFile.setFileName(ui->route->text()+ui->filename->text()+".csv");
+    myFile.setFileName(nombreArchivo);
     if(myFile.open(QIODevice::WriteOnly | QIODevice::Text))
         qDebug("Abre correctamente");
     outstream.setDevice(&myFile);
@@ -305,4 +308,10 @@ void MainWindow::updateTime(){
     ui->tiempominutos->display(int(tiempoTranscurrido.minute()));
 
 
+}
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    nombreArchivo = QFileDialog::getSaveFileName(this,"Guardar archivo","",tr("Excel(*.csv)"));
+    ui->pushButton_3->setEnabled(true);
 }
